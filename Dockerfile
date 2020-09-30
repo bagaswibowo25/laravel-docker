@@ -19,6 +19,6 @@ WORKDIR /usr/share/nginx/html/laravel
 RUN composer install
 RUN cp .env.example .env
 RUN php artisan key:generate
-RUN mv /startup.sh /usr/share/nginx/html/laravel
+RUN mv /docker-startup.sh /usr/share/nginx/html/laravel
 RUN chmod +x startup.sh
-CMD ./startup.sh
+CMD ./docker-startup.sh
