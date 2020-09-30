@@ -15,6 +15,7 @@ RUN apk add nginx
 COPY site-template-nginx.conf /etc/nginx
 
 # Install prestissimo speeding up composer
+RUN mkdir /root/.composer
 COPY composer.json /root/.composer
 RUN cd /root/.composer/ && composer install
 # Copy Laravel App
