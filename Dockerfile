@@ -14,7 +14,7 @@ RUN apk add bash gettext
 RUN apk add nginx
 COPY site-template-nginx.conf /etc/nginx
 # Copy Laravel App
-COPY laravel /usr/share/nginx/html
+ADD laravel /usr/share/nginx/html/laravel
 WORKDIR /usr/share/nginx/html/laravel
 RUN composer install
 RUN cp .env.example .env
