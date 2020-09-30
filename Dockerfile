@@ -16,6 +16,7 @@ COPY site-template-nginx.conf /etc/nginx
 COPY docker-startup.sh /
 RUN chmod +x /docker-startup.sh
 # Copy Laravel App
+RUN composer global require hirak/prestissimo
 ADD laravel /usr/share/nginx/html/laravel
 WORKDIR /usr/share/nginx/html/laravel
 RUN composer install
