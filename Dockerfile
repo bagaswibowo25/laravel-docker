@@ -20,5 +20,5 @@ RUN composer install
 RUN cp .env.example .env
 RUN php artisan key:generate
 RUN mv /docker-startup.sh /usr/share/nginx/html/laravel
-RUN chmod +x startup.sh
+RUN chmod +x docker-startup.sh
 CMD ./docker-startup.sh
