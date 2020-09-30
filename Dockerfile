@@ -12,7 +12,7 @@ COPY www.conf /etc/php7/php-fpm.d
 RUN apk add bash gettext
 # Install Nginx
 RUN apk add nginx
-COPY site-template-nginx /etc/nginx
+COPY site-template-nginx.conf /etc/nginx
 # Copy Laravel App
 COPY laravel /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html/laravel
