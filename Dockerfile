@@ -13,8 +13,7 @@ RUN apk add bash gettext
 # Install Nginx
 RUN apk add nginx
 COPY site-template-nginx.conf /etc/nginx
-COPY docker-startup.sh / --no-cache
-RUN chmod +x /docker-startup.sh
+
 # Install prestissimo speeding up composer
 COPY composer.json /root/.composer
 RUN cd /root/.composer/ && composer install
@@ -24,5 +23,6 @@ WORKDIR /usr/share/nginx/html/laravel
 RUN composer install
 RUN cp .env.example .env
 RUN php artisan key:generate
-RUN mv /docker-startup.sh /usr/share/nginx/html/laravel
+COPY docker-startup.sh /usr/share/nginx/html/laravel
+RUN chmod +x docker-startup.sh
 CMD ./docker-startup.sh
