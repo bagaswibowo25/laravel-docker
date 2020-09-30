@@ -1,4 +1,4 @@
-from alpine
+FROM alpine
 RUN apk update && apk upgrade
 # Add alpine edge repositories
 RUN rm /etc/apk/repositories
