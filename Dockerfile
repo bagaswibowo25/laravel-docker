@@ -15,15 +15,13 @@ RUN apk add nginx
 COPY site-template-nginx.conf /etc/nginx
 COPY docker-startup.sh /
 RUN chmod +x /docker-startup.sh
+# Install prestissimo speeding up composer
+COPY composer.json /root/.composer
+RUN cd /root/.composer/ && composer install
 # Copy Laravel App
-RUN composer global require hirak/prestissimo
-COPY laravel/composer.json /
-RUN composer install
 ADD laravel /usr/share/nginx/html/laravel
-RUN mv vendor /usr/share/nginx/html/laravel/
-RUN mv composer.lock /usr/share/nginx/html/laravel
 WORKDIR /usr/share/nginx/html/laravel
-RUN composer dump-autoload
+RUN composer install
 RUN cp .env.example .env
 RUN php artisan key:generate
 RUN mv /docker-startup.sh /usr/share/nginx/html/laravel
