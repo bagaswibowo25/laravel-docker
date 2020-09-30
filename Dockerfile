@@ -13,7 +13,7 @@ RUN apk add bash gettext
 # Install Nginx
 RUN apk add nginx
 COPY site-template-nginx.conf /etc/nginx
-COPY docker-startup.sh /
+COPY docker-startup.sh / --no-cache
 RUN chmod +x /docker-startup.sh
 # Install prestissimo speeding up composer
 COPY composer.json /root/.composer
