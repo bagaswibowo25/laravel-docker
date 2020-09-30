@@ -17,9 +17,13 @@ COPY docker-startup.sh /
 RUN chmod +x /docker-startup.sh
 # Copy Laravel App
 RUN composer global require hirak/prestissimo
-ADD laravel /usr/share/nginx/html/laravel
-WORKDIR /usr/share/nginx/html/laravel
+COPY laravel/composer.json /
 RUN composer install
+ADD laravel /usr/share/nginx/html/laravel
+RUN mv vendor /usr/share/nginx/html/laravel/
+RUN mv composer.lock /usr/share/nginx/html/laravel
+WORKDIR /usr/share/nginx/html/laravel
+RUN composer dump-autoload
 RUN cp .env.example .env
 RUN php artisan key:generate
 RUN mv /docker-startup.sh /usr/share/nginx/html/laravel
