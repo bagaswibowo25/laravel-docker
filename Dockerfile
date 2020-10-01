@@ -26,7 +26,7 @@ COPY site-template-nginx.conf /etc/nginx
 COPY www.conf /etc/php7/php-fpm.d
 WORKDIR /usr/share/nginx/html/laravel
 RUN chown -R nginx:nginx /usr/share/nginx/html/laravel/
-ARG CACHE_NEW=1
+ARG CACHE_CLEAR=1
 RUN chmod -R 777 storage
 RUN cp .env.example .env
 RUN composer dump-autoload
