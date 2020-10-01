@@ -14,11 +14,11 @@ RUN apk add nginx
 # Install prestissimo speeding up composer
 RUN mkdir /root/.composer
 COPY composer.json /root/.composer
-RUN cd /root/.composer/ && composer install
+RUN cd /root/.composer/ && composer install --no-scripts --no-interaction --no-autoloader --no-dev --prefer-dist
 # Copy Laravel App
 ARG CACHE_LARAVEL=1
 ADD laravel /usr/share/nginx/html/laravel
-RUN cd /usr/share/nginx/html/laravel && composer install
+RUN cd /usr/share/nginx/html/laravel && composer install --no-scripts --no-interaction --no-autoloader --no-dev --prefer-dist
 # Setup Configuration
 ARG CACHE_CONFIG=1
 COPY site-template-nginx.conf /etc/nginx
