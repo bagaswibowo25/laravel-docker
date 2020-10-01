@@ -25,8 +25,11 @@ ARG CACHE_CONFIG=1
 COPY site-template-nginx.conf /etc/nginx
 COPY www.conf /etc/php7/php-fpm.d
 WORKDIR /usr/share/nginx/html/laravel
+RUN chown -R nginx:nginx laravel/
+RUN chmod -R 770 laravel/storage
 RUN cp .env.example .env
-#RUN php artisan key:generate
+RUN composer dump-autoload
+RUN php artisan key:generate
 COPY docker-startup.sh /usr/share/nginx/html/laravel
 RUN chmod +x docker-startup.sh
 CMD ./docker-startup.sh
