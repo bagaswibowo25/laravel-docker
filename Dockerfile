@@ -1,5 +1,4 @@
 FROM alpine
-RUN apk update && apk upgrade
 # Add alpine edge repositories
 RUN rm /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
