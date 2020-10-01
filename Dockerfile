@@ -15,7 +15,7 @@ RUN apk add php7-xmlwriter=7.4.10-r2 php7-fileinfo=7.4.10-r2
 RUN apk add php7-dom=7.4.10-r2 php7-json=7.4.10-r2 php7-xmlreader=7.4.10-r2 
 RUN apk add php7-ctype=7.4.10-r2 php7-simplexml=7.4.10-r2 php7-pecl-igbinary 
 RUN apk add php7-pecl-mailparse php7-opcache=7.4.10-r2
-RUN apk add RUN apk add composer
+RUN apk add composer
 # Add gettext for env support
 RUN apk add bash gettext
 # Install Nginx
