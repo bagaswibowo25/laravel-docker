@@ -4,7 +4,7 @@ RUN rm /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 # Install and setup php7.4 package
-RUN apk update && apk add php7=7.4.10-r2 php7-tokenizer=7.4.10-r2 php7-session=7.4.10-r2 php7-bcmath=7.4.10-r2 php7-bz2=7.4.10-r2 php7-common=7.4.10-r2 php7-curl=7.4.10-r2 php7-fpm=7.4.10-r2 php7-gd=7.4.10-r2 php7-json=7.4.10-r2 php7-mbstring=7.4.10-r2 php7-mysqli=7.4.10-r2 php7-pdo_mysql=7.4.10-r2 php7-mysqlnd=7.4.10-r2 php7-xml=7.4.10-r2 php7-zip=7.4.10-r2 php7-fileinfo=7.4.10-r2 php7-ctype=7.4.10-r2
+RUN apk update && apk add php7 php7-tokenizer php7-session php7-bcmath php7-bz2 php7-common php7-curl php7-fpm php7-gd php7-json php7-mbstring php7-mysqli php7-pdo_mysql php7-mysqlnd php7-xml php7-zip php7-fileinfo php7-ctype
 RUN apk add composer
 # Add gettext for env support
 RUN apk add bash gettext
